@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - AlumniConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dashboard-body">
+    <!-- Top Navigation -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>AlumniConnect Admin</span>
+            </div>
+            <div class="nav-user">
+                <span id="adminName">Admin User</span>
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-section="overview">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Overview</span>
+                </li>
+                <li class="menu-item" data-section="pending">
+                    <i class="fas fa-clock"></i>
+                    <span>Pending Users</span>
+                    <span class="badge" id="pendingBadge">0</span>
+                </li>
+                <li class="menu-item" data-section="users">
+                    <i class="fas fa-users"></i>
+                    <span>All Users</span>
+                </li>
+                <li class="menu-item" data-section="students">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Students</span>
+                </li>
+                <li class="menu-item" data-section="alumni">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Alumni</span>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <h1 class="page-title">Dashboard Overview</h1>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalUsers">0</h3>
+                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="verifiedUsers">0</h3>
+                            <p>Verified Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="pendingUsers">0</h3>
+                            <p>Pending Verification</p>
+                        </div>
+                    </div>
+                    <div class="stat-card info">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="alumniCount">0</h3>
+                            <p>Alumni</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="switchSection('pending')">
+                            <i class="fas fa-user-check"></i>
+                            <span>Verify Pending Users</span>
+                        </button>
+                        <button class="action-btn" onclick="switchSection('users')">
+                            <i class="fas fa-users-cog"></i>
+                            <span>Manage Users</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pending Users Section -->
+            <section id="pending" class="content-section">
+                <div class="section-header">
+                    <h1 class="page-title">Pending Verification</h1>
+                    <button class="btn-refresh" onclick="loadPendingUsers()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+
+                <div id="pendingMessage" class="message" style="display: none;"></div>
+
+                <div class="users-grid" id="pendingUsersGrid">
+                    <!-- Pending users will be loaded here -->
+                </div>
+            </section>
+
+            <!-- All Users Section -->
+            <section id="users" class="content-section">
+                <div class="section-header">
+                    <h1 class="page-title">All Users</h1>
+                    <div class="filter-controls">
+                        <select id="verifiedFilter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="true">Verified</option>
+                            <option value="false">Not Verified</option>
+                        </select>
+                        <button class="btn-refresh" onclick="loadAllUsers()">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="users-table-container">
+                    <table class="users-table" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>College ID</th>
+                                <th>Type</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Users will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Students Section -->
+            <section id="students" class="content-section">
+                <h1 class="page-title">Students</h1>
+                <div class="users-grid" id="studentsGrid">
+                    <!-- Students will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Alumni Section -->
+            <section id="alumni" class="content-section">
+                <h1 class="page-title">Alumni</h1>
+                <div class="users-grid" id="alumniGrid">
+                    <!-- Alumni will be loaded here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- User Detail Modal -->
+    <div id="userModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>User Details</h2>
+            <div id="userDetails"></div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

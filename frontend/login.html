@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AlumniConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>AlumniConnect</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="register.html">Don't have an account? <strong>Register here</strong></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-card login-card">
+                <h1 class="auth-title">Welcome Back</h1>
+                <p class="auth-subtitle">Sign in to your AlumniConnect account</p>
+
+                <form id="loginForm" class="auth-form">
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input"
+                            placeholder="your.email@college.edu" required autofocus>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-input"
+                            placeholder="Enter your password" required>
+                    </div>
+
+                    <!-- Forgot Password -->
+                    <div class="form-group">
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+
+                    <!-- Error/Success Messages -->
+                    <div id="message" class="message" style="display: none;"></div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">Login</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Logging in...
+                        </span>
+                    </button>
+                </form>
+
+                <p class="auth-footer">
+                    Don't have an account? <a href="register.html">Register here</a>
+                </p>
+
+                <!-- Quick Demo Access -->
+                <div class="demo-section">
+                    <p class="demo-title">Quick demo access:</p>
+                    <div class="demo-buttons">
+                        <button class="demo-btn" data-role="student">
+                            <i class="fas fa-user-graduate"></i> Student
+                        </button>
+                        <button class="demo-btn" data-role="alumni">
+                            <i class="fas fa-user-tie"></i> Alumni
+                        </button>
+                        <button class="demo-btn" data-role="admin">
+                            <i class="fas fa-user-shield"></i> Admin
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/api.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

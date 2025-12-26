@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - AlumniConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>AlumniConnect</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html">Already have an account? <strong>Login here</strong></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-card">
+                <h1 class="auth-title">Create Your Account</h1>
+                <p class="auth-subtitle">Join the AlumniConnect community</p>
+
+                <form id="registerForm" class="auth-form">
+                    <!-- User Type Selection -->
+                    <div class="form-group">
+                        <label class="form-label">I am a</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="user_type" value="student" checked>
+                                <span class="radio-custom"></span>
+                                Student
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="user_type" value="alumni">
+                                <span class="radio-custom"></span>
+                                Alumni
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="full_name" class="form-label">Full Name</label>
+                        <input type="text" id="full_name" name="full_name" class="form-input"
+                            placeholder="Enter your full name" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input"
+                            placeholder="your.email@example.com" required>
+                    </div>
+
+                    <!-- College ID -->
+                    <div class="form-group">
+                        <label for="college_id" class="form-label">College ID</label>
+                        <input type="text" id="college_id" name="college_id" class="form-input"
+                            placeholder="Enter your college ID" required>
+                    </div>
+
+                    <!-- College Email -->
+                    <div class="form-group">
+                        <label for="college_email" class="form-label">College Email ID</label>
+                        <input type="email" id="college_email" name="college_email" class="form-input"
+                            placeholder="your.email@college.edu" required>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="form-group">
+                        <label for="department" class="form-label">Department</label>
+                        <select id="department" name="department" class="form-select" required>
+                            <option value="">Select your department</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Student-specific fields -->
+                    <div id="studentFields">
+                        <div class="form-group">
+                            <label for="current_year" class="form-label">Current Year</label>
+                            <select id="current_year" name="current_year" class="form-select">
+                                <option value="">Select year</option>
+                                <option value="1">First Year</option>
+                                <option value="2">Second Year</option>
+                                <option value="3">Third Year</option>
+                                <option value="4">Fourth Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="expected_passing_year" class="form-label">Expected Passing Year</label>
+                            <select id="expected_passing_year" name="expected_passing_year" class="form-select">
+                                <option value="">Select year</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Alumni-specific fields -->
+                    <div id="alumniFields" style="display: none;">
+                        <div class="form-group">
+                            <label for="passing_year" class="form-label">Passing Year</label>
+                            <select id="passing_year" name="passing_year" class="form-select">
+                                <option value="">Select year</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="current_company" class="form-label">Current Company</label>
+                            <input type="text" id="current_company" name="current_company" class="form-input"
+                                placeholder="Company name">
+                        </div>
+                        <div class="form-group">
+                            <label for="current_position" class="form-label">Current Position</label>
+                            <input type="text" id="current_position" name="current_position" class="form-input"
+                                placeholder="Your position">
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-input"
+                            placeholder="Create a strong password" required>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+                        <label for="confirm_password" class="form-label">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" class="form-input"
+                            placeholder="Re-enter your password" required>
+                    </div>
+
+                    <!-- Info Note -->
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <p><strong>Note:</strong> Your account will be verified by Admin using your College ID from the
+                            college database. This ensures the security and authenticity of all users on the platform.
+                        </p>
+                    </div>
+
+                    <!-- Error/Success Messages -->
+                    <div id="message" class="message" style="display: none;"></div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">Register</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Creating account...
+                        </span>
+                    </button>
+                </form>
+
+                <p class="auth-footer">
+                    Already have an account? <a href="login.html">Login here</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/api.js"></script>
+    <script src="js/register.js"></script>
+</body>
+
+</html>
