@@ -1,3 +1,9 @@
+from dotenv import load_dotenv
+import os
+
+# IMPORTANT: Load .env file BEFORE importing Config
+load_dotenv()
+
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
@@ -8,7 +14,6 @@ from routes.users import users_bp
 from routes.jobs import jobs_bp
 from routes.chat import chat_bp
 from routes.admin import admin_bp
-import os
 
 def create_app():
     app = Flask(__name__)
@@ -29,6 +34,7 @@ def create_app():
     # Create database tables
     with app.app_context():
         db.create_all()
+        print(f"✅ Using database: {app.config['SQLALCHEMY_DATABASE_URI']}")
     
     @app.route('/')
     def index():

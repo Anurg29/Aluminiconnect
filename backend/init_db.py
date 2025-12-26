@@ -1,13 +1,15 @@
 """
 Database initialization script for production deployment.
-Run this in Render Shell after deploying the backend.
+Run this to initialize MySQL database tables and create admin user.
 """
 
-from app import app, db
-from models import User
+from app import create_app
+from models import db, User
 
 def init_database():
     """Initialize database tables and create admin user"""
+    app = create_app()
+    
     with app.app_context():
         try:
             # Create all tables
@@ -45,6 +47,8 @@ def init_database():
             print("Password: admin123")
             print("⚠️  IMPORTANT: Change the password after first login!")
             print("=" * 50)
+            print("\n💾 Database: MySQL (alumniconnect)")
+            print("📊 All data will now be stored in MySQL!")
             
         except Exception as e:
             print(f"❌ Error initializing database: {str(e)}")
