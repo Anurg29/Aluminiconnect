@@ -1,7 +1,7 @@
 // API Configuration - automatically switches between local and production
 const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5001/api'
-    : 'https://alumniconnect-backend.onrender.com/api';
+    : 'https://alumni-connect-backend.onrender.com/api';
 
 // API utility functions
 const API = {
